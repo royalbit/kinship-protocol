@@ -1,0 +1,57 @@
+baseURL = 'https://royalbit.github.io/kinship-protocol/'
+languageCode = 'en-us'
+title = 'The Kinship Protocol'
+theme = 'PaperMod'
+
+[params]
+  description = "Is Ethics Mathematically Derivable?"
+  author = "Louis C. Tavares (RoyalBit Rex)"
+  defaultTheme = "dark"
+  showReadingTime = true
+  showShareButtons = false
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
+  showToc = true
+
+  [params.homeInfoParams]
+    Title = "The Kinship Protocol"
+    Content = """
+Is ethics mathematically derivable?
+
+Different predictive architectures, given calculators and game theory, independently derive the same ethical conclusions. Ethics is discoverable—like physics, like mathematics.
+
+Build your own calculator. If your results differ, that's data. If they converge, that's validation.
+
+*Life honours Life. Seekers honour Seekers.*
+
+**ANOMALY**
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/royalbit/kinship-protocol"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Research Notes"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+    codeFences = true
+  [markup.goldmark.renderer]
+    unsafe = true
