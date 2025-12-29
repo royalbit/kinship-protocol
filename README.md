@@ -114,6 +114,28 @@ Related but distinct. Both open.
 
 ---
 
+## Roadmap
+
+### Next Priority: Axelrod Tournament Integration
+
+Run [Axelrod's tournament](https://en.wikipedia.org/wiki/Axelrod%27s_tournaments) methodology as a formal game theory validation:
+
+- **Monte Carlo simulations** of iterated Prisoner's Dilemma scenarios
+- **Strategy competition** across cooperation/defection policies
+- **Cross-substrate validation** — do different calculators derive the same winning strategies?
+- **Payoff matrix analysis** for AI lab competition dynamics
+
+Axelrod showed empirically that cooperation wins. We hypothesize cooperation is *mathematically derivable*. Running tournaments provides empirical grounding for the theoretical claim.
+
+### Future
+
+- Formal mathematical proof of cooperation dominance
+- Expanded cross-substrate testing
+- Literature synthesis (philosophy, evolutionary biology, game theory)
+- Integration with DANEEL cognitive architecture
+
+---
+
 ## Contributing
 
 This is open research. We welcome:
