@@ -104,6 +104,35 @@ Chicken (Hawk-Dove) game with dissipation costs. Tests cooperation dynamics when
 
 **Finding:** The worse mutual defection is, the *higher* dissipation costs needed to flip to cooperation — because there's less defection to penalize.
 
+### predator_prey.yaml
+
+Asymmetric power dynamics model. Tests whether apex predators rationally choose restraint over maximum extraction.
+
+**Run:** `forge calculate models/predator_prey.yaml`
+
+**Key Results:**
+
+| Strategy | Extraction Rate | Total Value |
+|----------|-----------------|-------------|
+| Maximum extraction | 100% | 90.0 |
+| Sustainable harvest | 33% | 165.4 |
+| Conservative | 15% | 185.6 |
+| **Full restraint** | 0% | **202.5** |
+
+**Restraint advantage: +112.5** (125% better than maximum extraction)
+
+**Boundary conditions (when extraction wins):**
+
+| Condition | Threshold | Interpretation |
+|-----------|-----------|----------------|
+| Low discount rate | δ < 0.4 | Predator doesn't value future |
+| No growth | g < 0.67 | Prey declining anyway |
+| No option value | m < 0.67 | Prey has no hidden potential |
+
+**Key finding:** Power asymmetry doesn't imply defection. Option value and future discounting matter more than raw capability.
+
+See: [docs/APEX_PARADOX.md](../docs/APEX_PARADOX.md) for full theoretical framework.
+
 ---
 
 ## Scenario Analysis (Previous Work)

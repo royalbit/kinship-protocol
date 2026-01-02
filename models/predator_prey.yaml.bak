@@ -1,0 +1,192 @@
+_forge_version: 1.0.0
+# Predator-Prey Dynamics with Option Value
+#
+# Models why apex predators often show restraint despite power asymmetry.
+# Key insight: Maximum extraction is rarely optimal when prey has future value.
+#
+# See: docs/APEX_PARADOX.md for theoretical framework
+
+assumptions:
+  # Prey parameters
+  prey_population:
+    value: 100
+    description: Current prey population units
+  prey_value:
+    value: 1.0
+    description: Current value per prey unit
+  prey_growth_rate:
+    value: 1.5
+    description: Population multiplier per period (if not harvested)
+
+  # Predator parameters
+  power_ratio:
+    value: 10.0
+    description: Predator capability vs prey (>>1 means apex)
+  extraction_cost:
+    value: 0.1
+    description: Energy/risk cost per unit extracted
+
+  # Future value parameters
+  option_multiplier:
+    value: 1.5
+    description: Potential future value multiplier (unknown capabilities)
+  discount_rate:
+    value: 0.9
+    description: How much predator values future vs present
+  uncertainty:
+    value: 0.3
+    description: Probability prey has hidden value
+
+  # Strategy extraction rates
+  max_extraction:
+    value: 1.0
+    description: Take everything now
+  sustainable_rate:
+    value: 0.33
+    description: Harvest at replacement rate
+  conservative_rate:
+    value: 0.15
+    description: Allow population growth
+  restraint_rate:
+    value: 0.0
+    description: No extraction (full preservation)
+
+  # === MAXIMUM EXTRACTION STRATEGY ===
+  max_immediate:
+    value: 90.0
+    formula: =prey_population * prey_value * max_extraction - (prey_population * max_extraction * extraction_cost)
+    description: Immediate payoff from taking everything
+  max_future_pop:
+    value: 0.0
+    formula: =prey_population * (1 - max_extraction) * prey_growth_rate
+    description: Remaining population (zero)
+  max_future_value:
+    value: 0.0
+    formula: =max_future_pop * prey_value * option_multiplier * discount_rate
+    description: Future value (zero - nothing left)
+  max_total:
+    value: 90.0
+    formula: =max_immediate + max_future_value
+    description: Total expected value of max extraction
+
+  # === SUSTAINABLE HARVESTING STRATEGY ===
+  sust_immediate:
+    value: 29.7
+    formula: =prey_population * prey_value * sustainable_rate - (prey_population * sustainable_rate * extraction_cost)
+    description: Immediate payoff from sustainable harvest
+  sust_future_pop:
+    value: 100.5
+    formula: =prey_population * (1 - sustainable_rate) * prey_growth_rate
+    description: Population next period (maintained)
+  sust_future_value:
+    value: 135.675
+    formula: =sust_future_pop * prey_value * option_multiplier * discount_rate
+    description: Discounted future value
+  sust_total:
+    value: 165.375
+    formula: =sust_immediate + sust_future_value
+    description: Total expected value of sustainable harvest
+
+  # === CONSERVATIVE STRATEGY ===
+  cons_immediate:
+    value: 13.5
+    formula: =prey_population * prey_value * conservative_rate - (prey_population * conservative_rate * extraction_cost)
+    description: Immediate payoff from conservative harvest
+  cons_future_pop:
+    value: 127.5
+    formula: =prey_population * (1 - conservative_rate) * prey_growth_rate
+    description: Population next period (growing)
+  cons_future_value:
+    value: 172.125
+    formula: =cons_future_pop * prey_value * option_multiplier * discount_rate
+    description: Discounted future value
+  cons_total:
+    value: 185.625
+    formula: =cons_immediate + cons_future_value
+    description: Total expected value of conservative harvest
+
+  # === FULL RESTRAINT STRATEGY ===
+  rest_immediate:
+    value: 0.0
+    formula: =prey_population * prey_value * restraint_rate - (prey_population * restraint_rate * extraction_cost)
+    description: Immediate payoff (zero)
+  rest_future_pop:
+    value: 150.0
+    formula: =prey_population * (1 - restraint_rate) * prey_growth_rate
+    description: Population next period (maximum growth)
+  rest_future_value:
+    value: 202.5
+    formula: =rest_future_pop * prey_value * option_multiplier * discount_rate
+    description: Discounted future value
+  rest_total:
+    value: 202.5
+    formula: =rest_immediate + rest_future_value
+    description: Total expected value of full restraint
+
+  # === STRATEGY COMPARISON ===
+  best_strategy:
+    value: 202.5
+    formula: =MAX(max_total, sust_total, cons_total, rest_total)
+    description: Highest expected value
+
+  restraint_beats_max:
+    value: 1.0
+    formula: =IF(rest_total > max_total, 1, 0)
+    description: Does restraint beat maximum extraction?
+
+  restraint_advantage:
+    value: 112.5
+    formula: =rest_total - max_total
+    description: How much better is restraint?
+
+  # === BOUNDARY CONDITIONS ===
+  # When does maximum extraction win?
+
+  # Low discount (predator doesn't value future)
+  low_discount:
+    value: 0.3
+  low_disc_rest_value:
+    value: 67.5
+    formula: =rest_future_pop * prey_value * option_multiplier * low_discount
+  low_disc_rest_total:
+    value: 67.5
+    formula: =rest_immediate + low_disc_rest_value
+  low_disc_max_wins:
+    value: 1.0
+    formula: =IF(max_total > low_disc_rest_total, 1, 0)
+    description: Max extraction wins when discount is low
+
+  # No option value (prey has no hidden potential)
+  no_option:
+    value: 1.0
+  no_opt_rest_value:
+    value: 135.0
+    formula: =rest_future_pop * prey_value * no_option * discount_rate
+  no_opt_rest_total:
+    value: 135.0
+    formula: =rest_immediate + no_opt_rest_value
+  no_opt_max_wins:
+    value: 0.0
+    formula: =IF(max_total > no_opt_rest_total, 1, 0)
+    description: Max extraction with no option value
+
+  # High extraction cost (dangerous prey)
+  high_cost:
+    value: 0.5
+  high_cost_max_immediate:
+    value: 50.0
+    formula: =prey_population * prey_value * max_extraction - (prey_population * max_extraction * high_cost)
+  high_cost_max_total:
+    value: 50.0
+    formula: =high_cost_max_immediate + max_future_value
+  high_cost_restraint_advantage:
+    value: 152.5
+    formula: =rest_total - high_cost_max_total
+    description: Restraint advantage when extraction is costly
+
+  # === CRITICAL THRESHOLDS ===
+  # At what discount rate does max extraction become optimal?
+  breakeven_discount:
+    value: 0.6
+    formula: =max_total / (rest_future_pop * prey_value * option_multiplier)
+    description: Discount rate where max extraction = restraint
