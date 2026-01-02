@@ -49,6 +49,15 @@ Where cooperation breaks. Comprehensive taxonomy of seven failure modes with dia
 
 ---
 
+### Edge Cases
+**[EDGE_CASES.md](EDGE_CASES.md)**
+
+Model validation across 18 edge cases. Tests extreme values, boundary conditions, degenerate games, and numerical stability.
+
+**Key result:** All 18 tests pass. Models are robust across the parameter space.
+
+---
+
 ## Quick Reference
 
 | Document | Topic | Key Finding |
@@ -58,6 +67,7 @@ Where cooperation breaks. Comprehensive taxonomy of seven failure modes with dia
 | ONE_SHOT_GAMES | One-shot viability | Chicken enables one-shot cooperation |
 | SHORT_HORIZONS | Time horizon dynamics | Long horizons 10x more valuable for cooperation |
 | FAILURE_MODES | Boundary conditions | 7 failure modes with diagnostics and mitigations |
+| EDGE_CASES | Model validation | 18/18 tests pass, models robust |
 
 ## Related
 

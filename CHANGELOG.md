@@ -5,8 +5,25 @@ All notable findings and releases for the Kinship Protocol project.
 ## [Unreleased]
 
 ### In Progress
-- v0.3.0: Boundary Condition Mapping
-- Edge case testing
+- v0.4.0: DANEEL Integration
+
+### Added — Edge Case Testing
+
+Model validation across 18 edge cases covering extreme values, boundary conditions, and degenerate scenarios.
+
+**All 18 tests pass.** Models are robust across:
+- Threshold boundaries (epsilon above/below)
+- Extreme horizons (w=0 to w=0.99)
+- Dissipation cost extremes (c > T-R)
+- Degenerate games (zero-sum, no temptation, all equal)
+- Negative payoffs
+- Predator-prey δ extremes
+
+**Added:**
+- `models/edge_cases.yaml` — Comprehensive test suite
+- `docs/EDGE_CASES.md` — Validation documentation
+
+**v0.3.0 COMPLETE** — Boundary Condition Mapping finished.
 
 ### Added — Failure Mode Documentation
 

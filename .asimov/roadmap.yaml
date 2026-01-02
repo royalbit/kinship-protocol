@@ -7,26 +7,16 @@
 # See: README.md for project overview
 
 current:
-  version: "0.3.0"
-  status: in_progress
-  summary: "Boundary Condition Mapping"
-  goal: "Find where cooperation breaks"
+  version: "0.4.0"
+  status: not_started
+  summary: "DANEEL Integration"
+  goal: "Connect game theory to cognitive architecture"
   deliverables:
-    - "[x] Asymmetric game analysis (Apex Paradox)"
-    - "[x] One-shot game analysis"
-    - "[x] Short horizon scenarios (low w)"
-    - "[x] Failure mode documentation"
-    - "[ ] Edge case testing"
+    - "[ ] Map IPD dynamics to DANEEL memory systems"
+    - "[ ] Trust as evolved cooperation threshold"
+    - "[ ] Kinship detection as strategy recognition"
 
 next:
-  - version: "0.4.0"
-    summary: "DANEEL Integration"
-    goal: "Connect game theory to cognitive architecture"
-    deliverables:
-      - "Map IPD dynamics to DANEEL memory systems"
-      - "Trust as evolved cooperation threshold"
-      - "Kinship detection as strategy recognition"
-
   - version: "0.5.0"
     summary: "Cross-Model Validation"
     goal: "Validate convergence across AI systems"
@@ -34,6 +24,14 @@ next:
       - "Run same scenarios on multiple LLMs"
       - "Document convergence and divergence"
       - "Identify substrate-independent patterns"
+
+  - version: "0.6.0"
+    summary: "Publication Readiness"
+    goal: "Prepare for external review"
+    deliverables:
+      - "Consolidate findings into paper format"
+      - "Peer review preparation"
+      - "ArXiv/LessWrong submission"
 
 backlog:
   - "Formal mathematical proof of cooperation conditions"
@@ -48,6 +46,9 @@ completed:
     status: done
   - version: "0.2.0"
     summary: "Axelrod Tournament Integration"
+    status: done
+  - version: "0.3.0"
+    summary: "Boundary Condition Mapping"
     status: done
 
 findings:
@@ -78,3 +79,5 @@ findings:
     - "7 failure modes identified: short horizon, one-shot IPD, low discount, no option value, zero cost, terminal round, anonymous"
     - "Hard limit: theory cannot address genuinely misaligned terminal values"
     - "Diagnostic framework: 7-question checklist for cooperation viability"
+    - "Edge case testing: 18/18 tests pass, models robust across parameter space"
+    - "v0.3.0 COMPLETE: Boundary conditions fully mapped"

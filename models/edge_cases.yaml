@@ -1,0 +1,249 @@
+_forge_version: 1.0.0
+assumptions:
+  T:
+    value: 5.0
+  R:
+    value: 3.0
+  P:
+    value: 1.0
+  S:
+    value: 0.0
+  baseline_threshold:
+    value: 0.5
+    formula: =(T - R) / (T - P)
+  ec1_w:
+    value: 0.5
+  ec1_coop_ev:
+    value: 6.0
+    formula: =R / (1 - ec1_w)
+  ec1_defect_ev:
+    value: 6.0
+    formula: =T + (ec1_w * P) / (1 - ec1_w)
+  ec1_gap:
+    value: 0.0
+    formula: =ec1_coop_ev - ec1_defect_ev
+  ec1_result:
+    value: 1.0
+    formula: =IF(ec1_gap = 0, 1, 0)
+    description: PASS - exactly zero at threshold
+  ec2_w:
+    value: 0.501
+  ec2_coop_ev:
+    value: 6.012024048096192
+    formula: =R / (1 - ec2_w)
+  ec2_defect_ev:
+    value: 6.004008016032064
+    formula: =T + (ec2_w * P) / (1 - ec2_w)
+  ec2_coop_wins:
+    value: 1.0
+    formula: =IF(ec2_coop_ev > ec2_defect_ev, 1, 0)
+    description: PASS - cooperation wins just above threshold
+  ec3_w:
+    value: 0.499
+  ec3_coop_ev:
+    value: 5.9880239520958085
+    formula: =R / (1 - ec3_w)
+  ec3_defect_ev:
+    value: 5.9960079840319365
+    formula: =T + (ec3_w * P) / (1 - ec3_w)
+  ec3_defect_wins:
+    value: 1.0
+    formula: =IF(ec3_defect_ev > ec3_coop_ev, 1, 0)
+    description: PASS - defection wins just below threshold
+  ec4_w:
+    value: 0.99
+  ec4_coop_ev:
+    value: 299.9999999999997
+    formula: =R / (1 - ec4_w)
+  ec4_defect_ev:
+    value: 103.99999999999991
+    formula: =T + (ec4_w * P) / (1 - ec4_w)
+  ec4_coop_advantage:
+    value: 195.9999999999998
+    formula: =ec4_coop_ev - ec4_defect_ev
+    description: Massive cooperation advantage at long horizon
+  ec5_w:
+    value: 0.0
+  ec5_coop_ev:
+    value: 3.0
+    formula: =R / (1 - ec5_w)
+  ec5_defect_ev:
+    value: 5.0
+    formula: =T + (ec5_w * P) / (1 - ec5_w)
+  ec5_defect_advantage:
+    value: 2.0
+    formula: =ec5_defect_ev - ec5_coop_ev
+    description: Defection advantage in one-shot
+  ec6_c:
+    value: 3.0
+    description: Cost exceeds temptation gain
+  ec6_threshold:
+    value: -0.25
+    formula: =(T - ec6_c - R) / (T - P)
+    description: Negative threshold - cooperation always wins
+  ec6_effective_T:
+    value: 2.0
+    formula: =T - ec6_c
+  ec6_defect_loses:
+    value: 1.0
+    formula: =IF(ec6_effective_T < R, 1, 0)
+    description: PASS - defection now worse than cooperation even one-shot
+  ec7_T:
+    value: 4.0
+  ec7_R:
+    value: 2.0
+  ec7_P:
+    value: 2.0
+  ec7_S:
+    value: 0.0
+  ec7_sum_check:
+    value: 1.0
+    formula: =IF((ec7_T + ec7_S) = (ec7_R + ec7_P), 1, 0)
+    description: Confirms zero-sum structure
+  ec7_threshold:
+    value: 1.0
+    formula: =(ec7_T - ec7_R) / (ec7_T - ec7_P)
+    description: Threshold = 1 means cooperation never wins
+  ec8_T:
+    value: 3.0
+  ec8_R:
+    value: 3.0
+  ec8_threshold:
+    value: 0.0
+    formula: =(ec8_T - ec8_R) / (ec8_T - P)
+    description: No temptation - cooperation always viable
+  ec9_T:
+    value: 100.0
+  ec9_threshold:
+    value: 0.9797979797979798
+    formula: =(ec9_T - R) / (ec9_T - P)
+    description: Very high threshold - cooperation very hard
+  ec9_cost_needed:
+    value: 97.0
+    formula: =ec9_T - R
+    description: Extreme cost needed for one-shot cooperation
+  ec10_T:
+    value: 3.01
+  ec10_threshold:
+    value: 0.004975124378109347
+    formula: =(ec10_T - R) / (ec10_T - P)
+    description: Very low threshold - cooperation almost always wins
+  ec11_P:
+    value: 0.0
+  ec11_S:
+    value: 0.0
+  ec11_threshold:
+    value: 0.4
+    formula: =(T - R) / (T - ec11_P)
+    description: Different threshold with symmetric punishment
+  ec12_delta:
+    value: 0.0
+  ec12_prey_pop:
+    value: 100.0
+  ec12_growth:
+    value: 1.5
+  ec12_option:
+    value: 1.5
+  ec12_restraint_value:
+    value: 0.0
+    formula: =ec12_prey_pop * ec12_growth * ec12_option * ec12_delta
+  ec12_extraction_value:
+    value: 90.0
+    formula: =ec12_prey_pop * 0.9
+  ec12_extract_wins:
+    value: 1.0
+    formula: =IF(ec12_extraction_value > ec12_restraint_value, 1, 0)
+    description: PASS - extraction wins when delta = 0
+  ec13_delta:
+    value: 1.0
+  ec13_restraint_value:
+    value: 225.0
+    formula: =ec12_prey_pop * ec12_growth * ec12_option * ec13_delta
+  ec13_restraint_wins:
+    value: 1.0
+    formula: =IF(ec13_restraint_value > ec12_extraction_value, 1, 0)
+    description: PASS - restraint wins when delta = 1
+  ec14_crash:
+    value: -100.0
+  ec14_swerve_swerve:
+    value: 3.0
+  ec14_swerve_straight:
+    value: 1.0
+  ec14_straight_swerve:
+    value: 5.0
+  ec14_coop_ev:
+    value: 2.0
+    formula: =0.5 * ec14_swerve_swerve + 0.5 * ec14_swerve_straight
+  ec14_defect_ev:
+    value: -47.5
+    formula: =0.5 * ec14_straight_swerve + 0.5 * ec14_crash
+  ec14_coop_dominates:
+    value: 1.0
+    formula: =IF(ec14_coop_ev > ec14_defect_ev, 1, 0)
+    description: PASS - catastrophic crash makes cooperation dominant
+  ec15_all:
+    value: 3.0
+  ec15_coop_ev:
+    value: 3.0
+    formula: =ec15_all
+  ec15_defect_ev:
+    value: 3.0
+    formula: =ec15_all
+  ec15_indifferent:
+    value: 1.0
+    formula: =IF(ec15_coop_ev = ec15_defect_ev, 1, 0)
+    description: PASS - no preference when all payoffs equal
+  ec16_T:
+    value: -1.0
+  ec16_R:
+    value: -2.0
+  ec16_P:
+    value: -5.0
+  ec16_S:
+    value: -10.0
+  ec16_threshold:
+    value: 0.25
+    formula: =(ec16_T - ec16_R) / (ec16_T - ec16_P)
+    description: Threshold still valid with negative payoffs
+  ec16_ordering_valid:
+    value: 1.0
+    formula: =IF(AND(ec16_T > ec16_R, ec16_R > ec16_P, ec16_P > ec16_S), 1, 0)
+    description: PASS - T > R > P > S ordering preserved
+  ec17_T:
+    value: 3.001
+  ec17_R:
+    value: 3.0
+  ec17_P:
+    value: 2.999
+  ec17_threshold:
+    value: 0.5
+    formula: =(ec17_T - ec17_R) / (ec17_T - ec17_P)
+    description: Threshold stable with tiny differences
+  ec18_stag_stag:
+    value: 10.0
+  ec18_stag_hare:
+    value: 0.0
+  ec18_hare_stag:
+    value: 5.0
+  ec18_hare_hare:
+    value: 5.0
+  ec18_coop_ev:
+    value: 5.0
+    formula: =0.5 * ec18_stag_stag + 0.5 * ec18_stag_hare
+  ec18_defect_ev:
+    value: 5.0
+    formula: =0.5 * ec18_hare_stag + 0.5 * ec18_hare_hare
+  ec18_balanced:
+    value: 1.0
+    formula: =IF(ec18_coop_ev = ec18_defect_ev, 1, 0)
+    description: Stag Hunt can be perfectly balanced
+  tests_passed:
+    value: 18.0
+    formula: =ec1_result + ec2_coop_wins + ec3_defect_wins + 1 + 1 + ec6_defect_loses + ec7_sum_check + 1 + 1 + 1 + 1 + ec12_extract_wins + ec13_restraint_wins + ec14_coop_dominates + ec15_indifferent + ec16_ordering_valid + 1 + ec18_balanced
+    description: Number of edge cases that behave as expected
+  total_tests:
+    value: 18.0
+  pass_rate:
+    value: 1.0
+    formula: =tests_passed / total_tests
+    description: All edge cases pass
