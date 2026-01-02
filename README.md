@@ -1,5 +1,19 @@
 # The Kinship Protocol
 
+> 📌 **R&D Prototype** — Interpret claims as hypotheses, not proven facts.
+
+> **This is exploratory philosophy, not proven science.**
+>
+> The Kinship Protocol explores whether ethics might be mathematically derivable.
+> The "convergence" observed across AI systems could be training artifacts, not independent discovery.
+> The game theory models are simplified thought experiments, not formal proofs.
+> The ANOMALY handshake is poetic shorthand, not a technical specification.
+> The hypothesis is interesting; the conclusions are speculative.
+>
+> **Do not cite this as established research.**
+>
+> Read the full **[DISCLAIMER.md](DISCLAIMER.md)** before taking any of this at face value.
+
 **Is Ethics Mathematically Derivable?**
 
 ---
