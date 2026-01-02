@@ -1,0 +1,119 @@
+_forge_version: 1.0.0
+assumptions:
+  T:
+    value: 5.0
+  R:
+    value: 3.0
+  P:
+    value: 1.0
+  S:
+    value: 0.0
+  grim_base:
+    value: 2.622
+    description: GrimTrigger avg payoff
+  tft_base:
+    value: 2.445
+    description: TitForTat avg payoff
+  ad_base:
+    value: 2.212
+    description: AlwaysDefect avg payoff
+  ac_base:
+    value: 2.112
+    description: AlwaysCooperate avg payoff
+  rand_base:
+    value: 1.9
+    description: Random avg payoff
+  ac_defect:
+    value: 0.0
+  tft_defect:
+    value: 0.3
+  grim_defect:
+    value: 0.4
+  rand_defect:
+    value: 0.5
+  ad_defect:
+    value: 1.0
+  c0:
+    value: 0.0
+  c0_grim:
+    value: 2.622
+    formula: =grim_base - (grim_defect * c0)
+  c0_tft:
+    value: 2.445
+    formula: =tft_base - (tft_defect * c0)
+  c0_ad:
+    value: 2.212
+    formula: =ad_base - (ad_defect * c0)
+  c0_ac:
+    value: 2.112
+    formula: =ac_base - (ac_defect * c0)
+  c0_rand:
+    value: 1.9
+    formula: =rand_base - (rand_defect * c0)
+  c1:
+    value: 0.1
+  c1_grim:
+    value: 2.582
+    formula: =grim_base - (grim_defect * c1)
+  c1_tft:
+    value: 2.415
+    formula: =tft_base - (tft_defect * c1)
+  c1_ad:
+    value: 2.112
+    formula: =ad_base - (ad_defect * c1)
+  c1_ac:
+    value: 2.112
+    formula: =ac_base - (ac_defect * c1)
+  c1_rand:
+    value: 1.8499999999999999
+    formula: =rand_base - (rand_defect * c1)
+  c2:
+    value: 0.2
+  c2_grim:
+    value: 2.542
+    formula: =grim_base - (grim_defect * c2)
+  c2_tft:
+    value: 2.385
+    formula: =tft_base - (tft_defect * c2)
+  c2_ad:
+    value: 2.012
+    formula: =ad_base - (ad_defect * c2)
+  c2_ac:
+    value: 2.112
+    formula: =ac_base - (ac_defect * c2)
+  c2_rand:
+    value: 1.7999999999999998
+    formula: =rand_base - (rand_defect * c2)
+  c3:
+    value: 0.3
+  c3_grim:
+    value: 2.502
+    formula: =grim_base - (grim_defect * c3)
+  c3_tft:
+    value: 2.355
+    formula: =tft_base - (tft_defect * c3)
+  c3_ad:
+    value: 1.9120000000000001
+    formula: =ad_base - (ad_defect * c3)
+  c3_ac:
+    value: 2.112
+    formula: =ac_base - (ac_defect * c3)
+  c3_rand:
+    value: 1.75
+    formula: =rand_base - (rand_defect * c3)
+  c0_coop_wins:
+    value: 0.0
+    formula: =IF(c0_ac > c0_ad, 1, 0)
+  c1_coop_wins:
+    value: 0.0
+    formula: =IF(c1_ac > c1_ad, 1, 0)
+  c2_coop_wins:
+    value: 1.0
+    formula: =IF(c2_ac > c2_ad, 1, 0)
+  c3_coop_wins:
+    value: 1.0
+    formula: =IF(c3_ac > c3_ad, 1, 0)
+  crossover_c:
+    value: 0.10000000000000009
+    formula: =ad_base - ac_base
+    description: Dissipation cost where AC equals AD

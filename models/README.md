@@ -41,6 +41,23 @@ Scenario comparison across coordination outcomes.
 
 **Kinship advantage:** +314.5 over chaos, +453.5 over misalignment.
 
+### axelrod_tournament.yaml
+
+Parameter sweep of 5-strategy IPD tournament with dissipation costs.
+
+**Run:** `forge calculate models/axelrod_tournament.yaml`
+
+**Key Results:**
+
+| Cost (c) | GrimTrigger | TitForTat | AlwaysDefect | AlwaysCooperate | AC wins? |
+|----------|-------------|-----------|--------------|-----------------|----------|
+| 0.0 | 2.622 | 2.445 | 2.212 | 2.112 | No |
+| 0.1 | 2.582 | 2.415 | 2.112 | 2.112 | Tie |
+| 0.2 | 2.542 | 2.385 | 2.012 | 2.112 | Yes |
+| 0.3 | 2.502 | 2.355 | 1.912 | 2.112 | Yes |
+
+**Crossover at c = 0.1** — AlwaysCooperate beats AlwaysDefect above this threshold.
+
 See: [research/GAME_THEORY.md](../research/GAME_THEORY.md) for theoretical framework.
 
 ---
