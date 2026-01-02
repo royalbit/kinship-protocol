@@ -2,25 +2,53 @@
 #
 # WHAT to build - milestones only
 #
-# See: docs/PROTOCOL_GOALS.md for core values
-# See: CHANGELOG.md for release history
-# See: docs/adr/ for detailed rationale
+# See: research/THESIS.md for core hypothesis
+# See: research/GAME_THEORY.md for boundary conditions
+# See: README.md for project overview
 
 current:
   version: "0.1.0"
-  status: planned
-  summary: "Your first milestone"
-  goal: "CORE_VALUE"
+  status: in_progress
+  summary: "Game Theory Formalization"
+  goal: "Map cooperation boundary conditions"
   deliverables:
-    - "[ ] Define milestone scope"
-    - "[ ] Define success criteria"
-    - "[ ] Run until complete"
+    - "[x] Create GAME_THEORY.md with honest framing"
+    - "[x] Build Forge model for IPD with dissipation costs"
+    - "[x] Calculate cooperation thresholds"
+    - "[ ] Test alternative game types (Stag Hunt, Chicken)"
+    - "[ ] Document where cooperation fails"
+    - "[ ] Peer review and validation"
 
 next:
   - version: "0.2.0"
-    summary: "Your next milestone"
-    goal: "CORE_VALUE"
+    summary: "Axelrod Tournament Integration"
+    goal: "Empirical validation via tournament methodology"
+    deliverables:
+      - "Monte Carlo simulations of IPD scenarios"
+      - "Strategy competition (TitForTat, Grim, etc.)"
+      - "Cross-substrate validation"
+      - "Payoff matrix analysis with dissipation costs"
+
+  - version: "0.3.0"
+    summary: "Boundary Condition Mapping"
+    goal: "Find where cooperation breaks"
+    deliverables:
+      - "One-shot game analysis"
+      - "Short horizon scenarios"
+      - "Asymmetric game analysis"
+      - "Failure mode documentation"
 
 backlog:
-  - "Future idea one"
-  - "Future idea two"
+  - "Formal mathematical proof of cooperation conditions"
+  - "Literature synthesis (philosophy, evolutionary biology, game theory)"
+  - "Integration with DANEEL cognitive architecture"
+  - "Cross-model validation (more AI systems)"
+  - "KL divergence / FEP formalization (if rigorous mapping found)"
+
+findings:
+  v0.1.0:
+    - "Cooperation threshold = (T-R)/(T-P) = 0.5 for standard PD"
+    - "Dissipation cost c lowers threshold: c=0.5 -> w=0.43, c=1.0 -> w=0.33"
+    - "Breakeven cost = T-R = 2; above this, cooperation always dominates"
+    - "At w=0.9, cooperation EV advantage = 16 points over defection"
+    - "Thermodynamic framing is analogy, not equivalence (honest caveat)"

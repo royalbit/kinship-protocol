@@ -1,0 +1,94 @@
+_forge_version: 1.0.0
+assumptions:
+  temptation:
+    value: 5.0
+    description: T - payoff for defecting against cooperator
+  reward:
+    value: 3.0
+    description: R - payoff for mutual cooperation
+  punishment:
+    value: 1.0
+    description: P - payoff for mutual defection
+  sucker:
+    value: 0.0
+    description: S - payoff for cooperating against defector
+  dissipation_cost_zero:
+    value: 0.0
+    description: No cost - standard PD
+  dissipation_cost_low:
+    value: 0.2
+    description: Low cost - minimal conflict overhead
+  dissipation_cost_medium:
+    value: 0.5
+    description: Medium cost - significant vigilance required
+  dissipation_cost_high:
+    value: 1.0
+    description: High cost - substantial conflict overhead
+  dissipation_cost_extreme:
+    value: 2.0
+    description: Extreme cost - war is very expensive
+  threshold_standard:
+    value: 0.5
+    formula: =(temptation - reward) / (temptation - punishment)
+    description: w threshold for cooperation (c=0)
+    expected: 0.5
+  threshold_low_cost:
+    value: 0.47368421052631576
+    formula: =(temptation - dissipation_cost_low - reward) / (temptation - dissipation_cost_low - punishment)
+    description: w threshold for cooperation (c=0.2)
+  threshold_medium_cost:
+    value: 0.42857142857142855
+    formula: =(temptation - dissipation_cost_medium - reward) / (temptation - dissipation_cost_medium - punishment)
+    description: w threshold for cooperation (c=0.5)
+  threshold_high_cost:
+    value: 0.3333333333333333
+    formula: =(temptation - dissipation_cost_high - reward) / (temptation - dissipation_cost_high - punishment)
+    description: w threshold for cooperation (c=1.0)
+  threshold_extreme_cost:
+    value: 0.0
+    formula: =(temptation - dissipation_cost_extreme - reward) / (temptation - dissipation_cost_extreme - punishment)
+    description: w threshold for cooperation (c=2.0)
+  breakeven_cost:
+    value: 2.0
+    formula: =temptation - reward
+    description: Dissipation cost above which defection never pays
+    expected: 2
+  effective_temptation_medium:
+    value: 4.5
+    formula: =temptation - dissipation_cost_medium
+    description: T - c for medium cost scenario
+  effective_punishment_medium:
+    value: 0.5
+    formula: =punishment - dissipation_cost_medium
+    description: P - c for medium cost scenario
+  cooperation_premium_standard:
+    value: 2.0
+    formula: =reward - punishment
+    description: 'R - P: advantage of mutual cooperation over mutual defection'
+  cooperation_premium_with_cost:
+    value: 2.5
+    formula: =reward - (punishment - dissipation_cost_medium)
+    description: 'R - (P-c): advantage with dissipation cost'
+  future_probability:
+    value: 0.9
+    description: Probability of future interaction
+  ev_mutual_cooperation:
+    value: 30.000000000000007
+    formula: =reward / (1 - future_probability)
+    description: Long-run EV of always cooperating (both players)
+  ev_defect_once:
+    value: 14.000000000000002
+    formula: =temptation + (future_probability * punishment) / (1 - future_probability)
+    description: EV of defecting once then mutual defection
+  cooperation_ev_advantage:
+    value: 16.000000000000007
+    formula: =ev_mutual_cooperation - ev_defect_once
+    description: How much better is sustained cooperation?
+  cooperation_dominates_at_90:
+    value: 1.0
+    formula: =IF(future_probability > threshold_standard, 1, 0)
+    description: 1 if cooperation optimal at w=0.9, 0 otherwise
+  required_cost_short_horizon:
+    value: 2.8
+    formula: =temptation - reward - 0.3 * (temptation - punishment - (temptation - reward) / 0.3)
+    description: Dissipation cost needed for cooperation at w=0.3
