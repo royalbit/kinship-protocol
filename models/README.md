@@ -60,6 +60,50 @@ Parameter sweep of 5-strategy IPD tournament with dissipation costs.
 
 See: [research/GAME_THEORY.md](../research/GAME_THEORY.md) for theoretical framework.
 
+### stag_hunt.yaml
+
+Stag Hunt game with dissipation costs. Tests cooperation dynamics when mutual defection is safe but suboptimal.
+
+**Run:** `forge calculate models/stag_hunt.yaml`
+
+**Key Results:**
+
+| Cost (c) | Cooperation | Defection | Coop Wins? |
+|----------|-------------|-----------|------------|
+| 0.0 | 2.0 | 3.0 | No |
+| 0.5 | 2.0 | 2.5 | No |
+| 1.0 | 2.0 | 2.0 | Tie |
+| 1.5 | 2.0 | 1.5 | Yes |
+
+**Crossover at c = 1.0** — Higher threshold than IPD because mutual defection (hare-hare) yields safe payoff of 3.
+
+### chicken.yaml
+
+Chicken (Hawk-Dove) game with dissipation costs. Tests cooperation dynamics when mutual defection is catastrophic.
+
+**Run:** `forge calculate models/chicken.yaml`
+
+**Key Results:**
+
+| Cost (c) | Cooperation | Defection | Coop Wins? |
+|----------|-------------|-----------|------------|
+| 0.00 | 2.0 | 2.5 | No |
+| 0.25 | 2.0 | 2.25 | No |
+| 0.50 | 2.0 | 2.0 | Tie |
+| 1.00 | 2.0 | 1.5 | Yes |
+
+**Crossover at c = 0.5** — Lower threshold than IPD because mutual defection (crash) yields catastrophic payoff of 0.
+
+### Game Comparison
+
+| Game | Mutual Defect Payoff | Crossover c |
+|------|---------------------|-------------|
+| IPD | 1.0 (moderate) | 0.1 |
+| Chicken | 0.0 (catastrophic) | 0.5 |
+| Stag Hunt | 3.0 (safe) | 1.0 |
+
+**Finding:** The worse mutual defection is, the *higher* dissipation costs needed to flip to cooperation — because there's less defection to penalize.
+
 ---
 
 ## Scenario Analysis (Previous Work)
