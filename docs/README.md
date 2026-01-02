@@ -40,6 +40,15 @@ The shadow of the future. Maps cooperation dynamics as time horizons shorten. Fi
 
 ---
 
+### Failure Modes
+**[FAILURE_MODES.md](FAILURE_MODES.md)**
+
+Where cooperation breaks. Comprehensive taxonomy of seven failure modes with diagnostic criteria and mitigations. Synthesizes boundary conditions from all previous work.
+
+**Key result:** The theory specifies where it fails—short horizons, one-shot IPD, low discount, no option value, zero costs, terminal rounds, anonymity.
+
+---
+
 ## Quick Reference
 
 | Document | Topic | Key Finding |
@@ -48,6 +57,7 @@ The shadow of the future. Maps cooperation dynamics as time horizons shorten. Fi
 | APEX_PARADOX | Asymmetric power dynamics | Restraint > extraction under uncertainty |
 | ONE_SHOT_GAMES | One-shot viability | Chicken enables one-shot cooperation |
 | SHORT_HORIZONS | Time horizon dynamics | Long horizons 10x more valuable for cooperation |
+| FAILURE_MODES | Boundary conditions | 7 failure modes with diagnostics and mitigations |
 
 ## Related
 

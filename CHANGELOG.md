@@ -6,8 +6,28 @@ All notable findings and releases for the Kinship Protocol project.
 
 ### In Progress
 - v0.3.0: Boundary Condition Mapping
-- Failure mode documentation
 - Edge case testing
+
+### Added — Failure Mode Documentation
+
+Comprehensive taxonomy of where cooperation breaks.
+
+**7 Failure Modes Identified:**
+
+| # | Mode | Threshold | Primary Mitigation |
+|---|------|-----------|-------------------|
+| 1 | Short Horizon | w < 0.5 | Extend horizon |
+| 2 | One-Shot IPD | c < 1.5 | Add costs or reframe |
+| 3 | Low Discount | δ < 0.4 | Design long-term valuation |
+| 4 | No Option Value | m < 0.67 | Preserve uncertainty |
+| 5 | Zero Dissipation | c = 0 | Add monitoring |
+| 6 | Terminal Round | known end | Remove endpoint |
+| 7 | Anonymous | no reputation | Add accountability |
+
+**Hard limit:** Theory cannot address genuinely misaligned terminal values.
+
+**Added:**
+- `docs/FAILURE_MODES.md` — Full taxonomy with diagnostics and mitigations
 
 ### Added — Short Horizon Scenarios
 

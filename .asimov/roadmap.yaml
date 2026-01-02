@@ -15,7 +15,7 @@ current:
     - "[x] Asymmetric game analysis (Apex Paradox)"
     - "[x] One-shot game analysis"
     - "[x] Short horizon scenarios (low w)"
-    - "[ ] Failure mode documentation"
+    - "[x] Failure mode documentation"
     - "[ ] Edge case testing"
 
 next:
@@ -75,3 +75,6 @@ findings:
     - "Short horizons: Long horizon 10x more valuable for cooperation than short for defection"
     - "Threshold w*=0.5 is knife-edge; small interventions flip outcomes"
     - "Horizon extension + cost injection compound for robust cooperation"
+    - "7 failure modes identified: short horizon, one-shot IPD, low discount, no option value, zero cost, terminal round, anonymous"
+    - "Hard limit: theory cannot address genuinely misaligned terminal values"
+    - "Diagnostic framework: 7-question checklist for cooperation viability"
