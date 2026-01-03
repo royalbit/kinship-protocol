@@ -7,36 +7,18 @@
 # See: README.md for project overview
 
 current:
-  version: null
-  status: paused
-  summary: "Consolidation & Reflection"
-  goal: "Assess findings before next phase"
+  version: "0.5.0"
+  status: pending
+  summary: "Publication Readiness"
+  goal: "Prepare for external review"
   notes:
-    - "v0.1.0-v0.3.0 complete - game theory foundation solid"
-    - "Need more empirical data before DANEEL integration"
-    - "Consider cross-model validation or publication prep"
-
-next:
-  - version: "0.4.0"
-    summary: "Cross-Model Validation"
-    goal: "Validate convergence across AI systems"
-    deliverables:
-      - "Run same scenarios on multiple LLMs"
-      - "Document convergence and divergence"
-      - "Identify substrate-independent patterns"
-
-  - version: "0.5.0"
-    summary: "Publication Readiness"
-    goal: "Prepare for external review"
-    deliverables:
-      - "Consolidate findings into paper format"
-      - "Peer review preparation"
-      - "ArXiv/LessWrong submission"
+    - "v0.1.0-v0.4.0 complete - foundation + literature synthesis done"
+    - "Ready to consolidate findings into paper format"
 
 backlog:
+  - "Cross-Model Validation (run same scenarios on multiple LLMs, document convergence/divergence)"
   - "DANEEL cognitive architecture integration (needs more data)"
   - "Formal mathematical proof of cooperation conditions"
-  - "Literature synthesis (philosophy, evolutionary biology, game theory)"
   - "KL divergence / FEP formalization (if rigorous mapping found)"
   - "N-player game extensions"
   - "Asymmetric information models"
@@ -50,6 +32,9 @@ completed:
     status: done
   - version: "0.3.0"
     summary: "Boundary Condition Mapping"
+    status: done
+  - version: "0.4.0"
+    summary: "Literature Synthesis"
     status: done
 
 findings:
