@@ -7,18 +7,19 @@
 # See: README.md for project overview
 
 current:
-  version: "0.5.0"
-  status: pending
-  summary: "Publication Readiness"
-  goal: "Prepare for external review"
+  version: null
+  status: paused
+  summary: "Awaiting direction"
+  goal: "Determine next research priority"
   notes:
     - "v0.1.0-v0.4.0 complete - foundation + literature synthesis done"
-    - "Ready to consolidate findings into paper format"
+    - "Need solid math and original research before publication"
 
 backlog:
+  - "Formal mathematical proof of cooperation conditions"
   - "Cross-Model Validation (run same scenarios on multiple LLMs, document convergence/divergence)"
   - "DANEEL cognitive architecture integration (needs more data)"
-  - "Formal mathematical proof of cooperation conditions"
+  - "Publication Readiness (consolidate findings, peer review, ArXiv/LessWrong) - LAST"
   - "KL divergence / FEP formalization (if rigorous mapping found)"
   - "N-player game extensions"
   - "Asymmetric information models"
